@@ -1,7 +1,3 @@
-/* =============================================
-   TESOURA DOURADA - Style Sheet
-   Moda Premium
-   ============================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
@@ -12,9 +8,12 @@
 }
 
 :root {
-  --black: #141414;
+  --black: #000000;
   --white: #fafafa;
-  --gold: #c9952b;
+  --gold: #F0A818;
+  --purple: #453581;
+  --purple-dark: #391F51;
+  --purple-light: #7d7aaa;
   --gold-light: #d4af5a;
   --gold-dark: #a07a22;
   --gray-100: #f0f0f0;
@@ -105,7 +104,7 @@ ul { list-style: none; }
 }
 
 .header-actions button {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.85rem;
   display: flex;
   align-items: center;
@@ -194,7 +193,7 @@ ul { list-style: none; }
 .hero-divider {
   width: 50px;
   height: 1px;
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  background: linear-gradient(90deg, var(--purple-dark), var(--purple), var(--purple-light));
   margin: 2rem auto 0;
 }
 
@@ -214,21 +213,21 @@ ul { list-style: none; }
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 600;
-  background: var(--black);
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--purple);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   transition: all 0.3s;
 }
 
 .gender-btn:hover {
   color: var(--white);
-  border-color: var(--gold);
+  border-color: var(--purple-dark);
 }
 
 .gender-btn.active {
-  background: var(--gold);
+  background: var(--purple-light);
   color: var(--black);
-  border-color: var(--gold);
+  border-color: var(--purple-dark);
 }
 
 /* === Categories Filter === */
@@ -249,15 +248,15 @@ ul { list-style: none; }
   text-transform: uppercase;
   font-weight: 500;
   background: var(--gray-100);
-  color: var(--gray-600);
+  color: var(--black);
   transition: all 0.3s;
 }
 
 .cat-btn:hover { color: var(--black); }
 
 .cat-btn.active {
-  background: var(--gold);
-  color: var(--black);
+  background: var(--purple-dark);
+  color: var(--white);
 }
 
 /* === Products Grid === */
@@ -300,8 +299,8 @@ ul { list-style: none; }
   position: absolute;
   top: 0.6rem;
   left: 0.6rem;
-  background: var(--black);
-  color: var(--gold);
+  background: var(--purple-dark);
+  color: var(--white);
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -394,8 +393,8 @@ ul { list-style: none; }
 
 .detail-gender-badge {
   display: inline-block;
-  background: var(--black);
-  color: var(--gold);
+  background: var(--purple-dark);
+  color: var(--white);
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -429,7 +428,7 @@ ul { list-style: none; }
 }
 
 .detail-price {
-  color: var(--gold);
+  color: var(--purple-light);
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
@@ -458,7 +457,7 @@ ul { list-style: none; }
   border: 1px solid var(--gray-200);
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--gray-600);
+  color: var(--purple);
   background: var(--white);
   transition: all 0.2s;
   display: flex;
@@ -491,8 +490,8 @@ ul { list-style: none; }
 .detail-add-btn {
   width: 100%;
   padding: 1rem;
-  background: var(--gold);
-  color: var(--black);
+  background: var(--purple-dark);
+  color: var(--white);
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
@@ -516,8 +515,8 @@ ul { list-style: none; }
 
 .footer-logo { font-size: 1.5rem; margin-bottom: 0.3rem; }
 .footer-icon { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem; }
-.footer-tagline { color: rgba(255,255,255,0.35); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
-.footer-copy { color: rgba(255,255,255,0.2); font-size: 0.7rem; margin-top: 1.5rem; }
+.footer-tagline { color: rgb(255, 255, 255); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.footer-copy { color: rgb(255, 255, 255); font-size: 0.7rem; margin-top: 1.5rem; }
 
 /* === Cart Drawer === */
 .cart-overlay {
