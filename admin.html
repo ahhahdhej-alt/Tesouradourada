@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesoura Dourada — Painel Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">✂️</div>
+      <h1>Tesoura Dourada</h1>
+      <p class="login-subtitle">Painel Administrativo</p>
+      <div class="login-form">
+        <input type="email" id="adminEmail" placeholder="E-mail" autocomplete="off">
+        <input type="password" id="adminPassword" placeholder="Senha">
+        <p class="login-error" id="loginError"></p>
+        <button onclick="adminLogin()">Entrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="admin-panel" style="display:none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">✂️</span>
+        <h2>Tesoura Dourada</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" onclick="showSection('dashboard', this)">📊 Dashboard</button>
+        <button class="nav-item" onclick="showSection('sales', this)">💰 Vendas</button>
+        <button class="nav-item" onclick="showSection('inventory', this)">📦 Estoque</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button onclick="adminLogout()">🚪 Sair</button>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <h2>✂️ Tesoura Dourada</h2>
+      <button onclick="adminLogout()" title="Sair">🚪</button>
+    </div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Content -->
+    <main class="admin-content">
+
+      <!-- DASHBOARD -->
+      <section id="sec-dashboard" class="section active">
+        <h1 class="section-title">Dashboard</h1>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#d4af37;">💰</div>
+            <div class="stat-info">
+              <p class="stat-label">Receita Total</p>
+              <p class="stat-value" id="statRevenue">R$ 0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#27ae60;">🛒</div>
+            <div class="stat-info">
+              <p class="stat-label">Pedidos</p>
+              <p class="stat-value" id="statOrders">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#3498db;">👥</div>
+            <div class="stat-info">
+              <p class="stat-label">Clientes</p>
+              <p class="stat-value" id="statClients">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#e74c3c;">📦</div>
+            <div class="stat-info">
+              <p class="stat-label">Produtos</p>
+              <p class="stat-value" id="statProducts">0</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart placeholder -->
+        <div class="chart-section">
+          <h2>Vendas dos Últimos 7 Dias</h2>
+          <div class="chart-container">
+            <div class="bar-chart" id="barChart"></div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="recent-section">
+          <h2>Pedidos Recentes</h2>
+          <div class="table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Pedido</th><th>Cliente</th><th>Valor</th><th>Status</th><th>Data</th></tr>
+              </thead>
+              <tbody id="recentOrders"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SALES -->
+      <section id="sec-sales" class="section">
+        <h1 class="section-title">Painel de Vendas</h1>
+        <div class="sales-filters">
+          <select id="salesPeriod" onchange="renderSales()">
+            <option value="7">Últimos 7 dias</option>
+            <option value="30" selected>Últimos 30 dias</option>
+            <option value="90">Últimos 90 dias</option>
+          </select>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#d4af37;">💰</div>
+            <div class="stat-info">
+              <p class="stat-label">Vendas no Período</p>
+              <p class="stat-value" id="salesTotal">R$ 0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#27ae60;">📈</div>
+            <div class="stat-info">
+              <p class="stat-label">Ticket Médio</p>
+              <p class="stat-value" id="salesAvg">R$ 0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#9b59b6;">🏆</div>
+            <div class="stat-info">
+              <p class="stat-label">Mais Vendido</p>
+              <p class="stat-value" id="salesTop" style="font-size:0.95rem;">—</p>
+            </div>
+          </div>
+        </div>
+        <div class="recent-section">
+          <h2>Histórico de Vendas</h2>
+          <div class="table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr><th>#</th><th>Produto</th><th>Qtd</th><th>Valor</th><th>Cliente</th><th>Data</th></tr>
+              </thead>
+              <tbody id="salesTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section id="sec-inventory" class="section">
+        <h1 class="section-title">Controle de Estoque</h1>
+        <div class="inventory-header">
+          <input type="text" id="inventorySearch" placeholder="Buscar produto..." oninput="renderInventory()">
+          <select id="inventoryFilter" onchange="renderInventory()">
+            <option value="all">Todos</option>
+            <option value="low">Estoque Baixo</option>
+            <option value="out">Sem Estoque</option>
+          </select>
+        </div>
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Img</th><th>Produto</th><th>Categoria</th><th>Gênero</th><th>Preço</th><th>Estoque</th><th>Status</th></tr>
+            </thead>
+            <tbody id="inventoryTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
