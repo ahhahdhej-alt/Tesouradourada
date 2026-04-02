@@ -197,6 +197,30 @@ ul { list-style: none; }
   margin: 2rem auto 0;
 }
 
+/* === Promo Bar === */
+.promo-bar {
+  background: var(--purple);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+.promo-track {
+  display: inline-flex;
+  animation: promoScroll 25s linear infinite;
+}
+.promo-item {
+  display: inline-block;
+  padding: 0.6rem 2.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: 0.02em;
+}
+@keyframes promoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* === Gender Filter === */
 .gender-filter {
   max-width: 1200px;
