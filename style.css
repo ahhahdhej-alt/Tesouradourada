@@ -529,6 +529,47 @@ ul { list-style: none; }
 
 .detail-add-btn:hover { background: var(--gold-dark); }
 
+/* === About Section === */
+.about-section {
+  background: var(--black);
+  color: var(--white);
+  padding: 5rem 1rem;
+}
+.about-inner {
+  max-width: 800px;
+  margin: 1rem auto;
+  text-align: center;
+}
+.about-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.about-divider {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  margin: 0 auto 2rem;
+}
+.about-text {
+  text-align: left;
+  line-height: 1.8;
+}
+.about-text p {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+.about-text p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
 /* === Footer === */
 .footer {
   background: var(--black);
@@ -705,6 +746,11 @@ ul { list-style: none; }
   .detail-info { padding: 1.5rem; }
   .detail-name { font-size: 1.2rem; }
   .detail-price { font-size: 1.2rem; }
+
+  /* About section responsive */
+  .about-section { padding: 3rem 1rem; }
+  .about-title { font-size: 1.6rem; }
+  .about-text p { font-size: 0.85rem; }
 }
 
 @media (max-width: 480px) {
